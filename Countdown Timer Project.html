@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics Text-Book Giveaway</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-family: arial;
+    }
+    body{
+      width: 100%;
+      height: 100vh;
+      background-image: url("./9168528.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 10;
+
+      display: grid;
+      grid-template-columns: 70%;
+      justify-content: center;
+      align-content: center;
+    }
+    .heading{
+      color: black;
+      font-size: 50px;
+      font-weight: bolder;
+      text-align: center;
+      letter-spacing: 6px;
+      word-spacing: 6px;
+      margin-bottom: 25px;
+    }
+    .description{
+      color: black;
+      font-size: 25px;
+      text-align: center;
+      letter-spacing: 1px;
+      font-weight: lighter;
+    }
+    .timer{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .sub-timer{
+      width: 220px;
+      border-color: rgba(225, 225, 225, 0.19);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      overflow: hidden;
+    }
+    .digit{
+      color: white;
+      font-weight: lighter;
+      font-size: 75px;
+      text-align: center;
+      padding: 2.5rem 0;
+    }
+    .digit-name{
+      color: black;
+      background-color: white;
+      text-align: center;
+      padding: 0.6rem 0;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <h1 class="heading">Statistics Text-Book</h1>
+    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis aut reprehenderit porro sit aliquam sunt provident temporibus, architecto, obcaecati placeat eaque veniam repellat dolore fuga accusantium eveniet magnam facere totam.</p>
+    
+    <div class="timer">
+      <div class="sub-timer">
+        <h1 id="day" class="digit">00</h1>
+        <p class="digit-name">Days</p>
+      </div>
+      <div class="sub-timer">
+        <h1 id="hour" class="digit">00</h1>
+        <p  class="digit-name">Hours</p>
+      </div>
+      <div class="sub-timer">
+        <h1 id="min" class="digit">00</h1>
+        <p  class="digit-name">Minutes</p>
+      </div>
+      <div class="sub-timer">
+        <h1 id="sec" class="digit">00</h1>
+        <p  class="digit-name">Seconds</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- javaScript -->
+  <script>
+    var target_mili_sec = new Date("March 5, 2024 00:00:00").getTime();
+    function timer(){
+      var now_mili_sec = new Date().getTime();
+      var remaining_sec = Math.floor( (target_mili_sec - now_mili_sec) / 1000);
+
+      var day = Math.floor(remaining_sec / (3600 * 24));
+      var hour = Math.floor((remaining_sec % (3600 * 24)) / 3600);
+      var min = Math.floor((remaining_sec % 3600) / 60);
+      var sec =Math.floor(remaining_sec % 60);
+
+      document.querySelector("#day").innerHTML = day;
+      document.querySelector("#hour").innerHTML = hour;
+      document.querySelector("#min").innerHTML = min;
+      document.querySelector("#sec").innerHTML = sec;
+
+    }
+    setInterval(timer, 1000); //1000 it means 1 sec
+  </script>
+</body>
+</html>
